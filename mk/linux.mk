@@ -1,8 +1,11 @@
+XPATH = PATH=$(CROSS)/bin:$(PATH)
+
 .PHONY: gmp mpfr mpc cclibs binutils gcc
 binutils:
 gcc:
 
-LIBCC += --prefix $(CROSS) --disable-shared --with-gmp=$(CROSS)
+TCFG   = --prefix $(CROSS)
+LIBCC += $(TCFG) --disable-shared --with-gmp=$(CROSS)
 
 GMP_CFG =
 gmp: $(CROSS)/lib/libgmp.a
@@ -37,5 +40,8 @@ BINUTILS_CFG += --with-sysroot=$(ROOT) --with-native-system-header-dir=/include
 BINUTILS_CFG += --enable-lto --disable-multilib
 binutils: $(TLD)
 $(TLD): $(REF)/$(BINUTILS)/README
+	rm -rf $(TMP)/$(BINUTILS) ; mkdir $(TMP)/$(BINUTILS) ; cd $(TMP)/$(BINUTILS) ;\
+	$(XPATH) $(REF)/$(BINUTILS)/configure $(TCFG) $(BINUTILS_CFG) &&\
+	$(MAKE) && $(MAKE) install-strip
 $(REF)/$(BINUTILS)/README: $(DISTR)/$(BINUTILS_GZ)
 	cd $(REF) ; xzcat $< | tar x && touch $@
