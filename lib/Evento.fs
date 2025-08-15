@@ -437,6 +437,7 @@ let arch:unit = //
         ] do
             mkdir $"arch/{arch}"
             touch $"arch/{arch}/{arch}.kernel"
+            touch $"arch/{arch}/{arch}.uclibc"
             touch $"arch/{arch}/{arch}.mk"
             touch $"arch/{arch}/{arch}.cmake"
             mkdir $"arch/{arch}/inc"
@@ -588,6 +589,19 @@ let cmake: unit = //
     let TXT = "cp ~/em/CMakeLists.txt CMakeLists.txt"
     let PRESET = "meld CMakePresets.json ~/em/CMakePresets.json"
     meld "cmake"
+
+let linux_ver = "6.12.41"
+let linux:unit = //
+    mkdir "root"
+    for d in ["boot";"isolinux"] do
+        mkdir $"root/{d}"
+    File.WriteAllText ("root/isolinux/isolinux.cfg",$"""\
+default boot
+timeout 1
+label boot
+kernel /boot/vmlinuz-{linux_ver}-qemu386
+append root=LABEL=qemu386 vga=0x312
+""")
 
 let apt:unit = //
     File.WriteAllText ("apt.Debian","""git make curl
