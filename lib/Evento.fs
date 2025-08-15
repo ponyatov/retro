@@ -437,6 +437,7 @@ let arch:unit = //
         // "xtensa";
         ] do
             mkdir $"arch/{arch}"
+            touch $"arch/{arch}/{arch}.kernel"
             touch $"arch/{arch}/{arch}.mk"
             touch $"arch/{arch}/{arch}.cmake"
             mkdir $"arch/{arch}/inc"
