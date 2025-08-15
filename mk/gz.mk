@@ -9,3 +9,9 @@ GMP_GZ = $(GMP).tar.xz
 GZ += $(DISTR)/$(GMP_GZ)
 $(DISTR)/$(GMP_GZ):
 	$(CURL) $@ https://ftp.gnu.org/gnu/gmp/$(GMP_GZ)
+
+MPFR = mpfr-$(MPFR_VER)
+MPFR_GZ = $(MPFR).tar.xz
+GZ += $(DISTR)/$(MPFR_GZ)
+$(DISTR)/$(MPFR_GZ):
+	$(CURL) $@ https://www.mpfr.org/mpfr-current/$(MPFR_GZ)

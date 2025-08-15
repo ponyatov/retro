@@ -384,7 +384,6 @@ let cross_ name = //
 let hw:unit = //
     cross_ "hw"
 
-
     for hw,cpu in [
         ("pc","i5");
         ("qemu386","i486"); ("retro","i686");
