@@ -496,7 +496,7 @@ let settings:unit = //
         "*.kernel": "properties", "*.config": "properties",
         "*.service": "systemd-unit-file",
         "requirements.*": "properties",
-        "*.ini": "properties", "*.f": "properties",
+        "*.ini": "bcx", "*.f": "bcx",
     },
 
     // editor
