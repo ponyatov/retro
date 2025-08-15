@@ -384,16 +384,20 @@ let cross_ name = //
 let hw:unit = //
     cross_ "hw"
 
+    touch "hw/all.kernel"
+
     for hw,cpu in [
         ("pc","i5");
-        // ("qemu386","i486"); ("retro","i686");
-        // ("rpi3","bcm2837"); ("rpi4","bcm2711"); ("rpi5","bcm2712"); ("opi800","rk3399");
+        ("qemu386","i486"); ("retro","i686");
+        ("rpi3","bcm2837"); ("rpi4","bcm2711"); ("rpi5","bcm2712"); ("opi800","rk3399");
+        ("a7n8x","athlon")
         // ("pillf103","stm32f103c8"); ("f429disco","stm32f429zi");
         // ("netduinoplus2","stm32f405rg");
         // ("iskra","stm32f405rg"); ("f4disco","stm32f407vg");
         // ("esp8266","lx106"); ("esp32","lx106");
         ] do
             mkdir $"hw/{hw}"
+            touch $"hw/{hw}/{hw}.kernel"
             File.WriteAllText ($"hw/{hw}/{hw}.mk",$"CPU = {cpu}\n")
             touch $"hw/{hw}/{hw}.cmake"
             mkdir $"hw/{hw}/inc"
