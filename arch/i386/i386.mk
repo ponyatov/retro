@@ -1,4 +1,5 @@
- TARGET  = i686-linux-gnu
-RTARGET  = i686-unknown-linux-gnu
+ TARGET  = i686-linux-uclibc
+RTARGET  = i686-unknown-linux-uclibc
 OS       = linux
-APT     += gcc-i686-linux-gnu qemu-system-i386
+APT     += qemu-system-i386
+QEMU     = qemu-system-i386 -M pc

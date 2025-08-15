@@ -1,5 +1,5 @@
 .PHONY : install update ref gz
-install: $(WS)_install $(PIP) doc ref gz
+install: $(WS)_install doc ref gz
 	$(MAKE) update
 update : $(WS)_update  $(PIP)
 	$(RUSTUP) self update && $(RUSTUP) update

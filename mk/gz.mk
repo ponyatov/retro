@@ -21,3 +21,9 @@ MPC_GZ = $(MPC).tar.gz
 GZ += $(DISTR)/$(MPC_GZ)
 $(DISTR)/$(MPC_GZ):
 	$(CURL) $@ https://ftp.gnu.org/gnu/mpc/$(MPC_GZ)
+
+BINUTILS = binutils-$(BINUTILS_VER)
+BINUTILS_GZ = $(BINUTILS).tar.xz
+GZ += $(DISTR)/$(BINUTILS_GZ)
+$(DISTR)/$(BINUTILS_GZ):
+	$(CURL) $@ https://sourceware.org/pub/binutils/releases/binutils-2.45/$(BINUTILS_GZ)
