@@ -7,5 +7,6 @@ BINUTILS_VER = 2.40
 GMP_VER      = 6.3.0
 # MPFR_VER     = 4.2.1
 MPFR_VER     = 4.2.2
-MPC_VER      = 1.2.1
+# MPC_VER      = 1.2.1
+MPC_VER      = 1.3.1
 ISL_VER      = 0.26

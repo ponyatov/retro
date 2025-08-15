@@ -20,4 +20,10 @@ $(CROSS)/lib/libmpfr.a: $(REF)/$(MPFR)/README
 $(REF)/$(MPFR)/README: $(DISTR)/$(MPFR_GZ)
 	cd $(REF) ; xzcat $< | tar x && touch $@
 
-mpc:
+MPC_CFG =
+mpc: $(CROSS)/lib/libmpc.a
+$(CROSS)/lib/libmpc.a: $(REF)/$(MPC)/README
+	rm -rf $(TMP)/$(MPC) ; mkdir $(TMP)/$(MPC) ; cd $(TMP)/$(MPC) ;\
+	$(REF)/$(MPC)/configure $(LIBCC) $(MPC_CFG) && $(MAKE) install
+$(REF)/$(MPC)/README: $(DISTR)/$(MPC_GZ)
+	cd $(REF) ; zcat $< | tar x && touch $@

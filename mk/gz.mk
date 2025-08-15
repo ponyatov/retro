@@ -15,3 +15,9 @@ MPFR_GZ = $(MPFR).tar.xz
 GZ += $(DISTR)/$(MPFR_GZ)
 $(DISTR)/$(MPFR_GZ):
 	$(CURL) $@ https://www.mpfr.org/mpfr-current/$(MPFR_GZ)
+
+MPC = mpc-$(MPC_VER)
+MPC_GZ = $(MPC).tar.gz
+GZ += $(DISTR)/$(MPC_GZ)
+$(DISTR)/$(MPC_GZ):
+	$(CURL) $@ https://ftp.gnu.org/gnu/mpc/$(MPC_GZ)
