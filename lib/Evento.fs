@@ -410,12 +410,14 @@ let cpu:unit = //
 
     for cpu,arch in [
         ("i5","x86_64");
-        // ("i486","i386"); ("i686","i386");
+        ("i486","i386"); ("i686","i386");
+        ("athlon","i386");
         // ("stm32f103c8","cortexm3"); ("stm32f429zi","cortexm4");
         // ("stm32f405rg","cortexm4"); ("stm32f407vg","cortexm4");
         // ("lx106","xtensa");
         ] do
             mkdir $"cpu/{cpu}"
+            touch $"cpu/{cpu}/{cpu}.kernel"
             File.WriteAllText ($"cpu/{cpu}/{cpu}.mk",$"ARCH = {arch}\n")
             touch $"cpu/{cpu}/{cpu}.cmake"
             mkdir $"cpu/{cpu}/inc"
