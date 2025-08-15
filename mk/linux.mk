@@ -51,9 +51,17 @@ $(TLD): $(REF)/$(BINUTILS)/README
 $(REF)/$(BINUTILS)/README: $(DISTR)/$(BINUTILS_GZ)
 	cd $(REF) ; xzcat $< | tar x && touch $@
 
-CFG_GCC0 += $(CFG_BINUTILS) --enable-languages="c"
-CFG_GCC0 += --without-headers --with-newlib
-CFG_GCC0 += --with-gmp=$(CROSS) --with-mpfr=$(CROSS) --with-mpc=$(CROSS)
+GCC0_CFG += $(BINUTILS_CFG) --enable-languages="c"
+GCC0_CFG += --without-headers --with-newlib
+GCC0_CFG += --with-gmp=$(CROSS) --with-mpfr=$(CROSS) --with-mpc=$(CROSS)
 
 gcc0: $(TCC)
-$(TCC): $(REF)/$(BINUTILS)/README
+$(TCC): $(REF)/$(GCC)/README
+	rm -rf $(TMP)/$(GCC) ; mkdir $(TMP)/$(GCC) ; cd $(TMP)/$(GCC) ;\
+	$(XPATH) $(REF)/$(GCC)/configure $(TCFG) $(GCC0_CFG)
+	cd $(TMP)/$(GCC) ; $(MAKE) all-gcc
+	cd $(TMP)/$(GCC) ; $(MAKE) install-gcc
+# 	cd $(TMP)/$(GCC) ; $(MAKE) all-target-libgcc
+# 	cd $(TMP)/$(GCC) ; $(MAKE) install-target-libgcc
+$(REF)/$(GCC)/README: $(DISTR)/$(GCC_GZ)
+	cd $(REF) ; xzcat $< | tar x && touch $@
