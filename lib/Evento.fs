@@ -412,6 +412,7 @@ let cpu:unit = //
         ("i5","x86_64");
         ("i486","i386"); ("i686","i386");
         ("athlon","i386");
+        ("bcm2837","aarch64"); ("bcm2711","aarch64"); ("bcm2712","aarch64"); ("rk3399","aarch64");
         // ("stm32f103c8","cortexm3"); ("stm32f429zi","cortexm4");
         // ("stm32f405rg","cortexm4"); ("stm32f407vg","cortexm4");
         // ("lx106","xtensa");
@@ -430,8 +431,8 @@ let arch:unit = //
 
     for arch in [
         "x86_64";
-        // "i386";
-        // "aarch64";
+        "i386";
+        "aarch64";
         // "cortexm"; "cortexm3"; "cortexm4";
         // "xtensa";
         ] do
