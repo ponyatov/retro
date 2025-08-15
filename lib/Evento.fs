@@ -384,7 +384,6 @@ let cross_ name = //
 let hw:unit = //
     cross_ "hw"
 
-    touch "hw/all.kernel"
 
     for hw,cpu in [
         ("pc","i5");
@@ -447,6 +446,7 @@ let arch:unit = //
 
 let os:unit = //
     cross_ "os"
+    touch "os/linux/all.kernel"
     for os in [
         "linux";
         // "none";
