@@ -26,4 +26,4 @@ BINUTILS = binutils-$(BINUTILS_VER)
 BINUTILS_GZ = $(BINUTILS).tar.xz
 GZ += $(DISTR)/$(BINUTILS_GZ)
 $(DISTR)/$(BINUTILS_GZ):
-	$(CURL) $@ https://sourceware.org/pub/binutils/releases/binutils-2.45/$(BINUTILS_GZ)
+	$(CURL) $@ https://sourceware.org/pub/binutils/releases/$(BINUTILS_GZ)

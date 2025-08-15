@@ -30,7 +30,12 @@ $(REF)/$(MPC)/README: $(DISTR)/$(MPC_GZ)
 
 cclibs: gmp mpfr mpc
 
+TLD = $(CROSS)/bin/$(TARGET)-ld
+
 BINUTILS_CFG += --disable-nls --target=$(TARGET)
 BINUTILS_CFG += --with-sysroot=$(ROOT) --with-native-system-header-dir=/include
 BINUTILS_CFG += --enable-lto --disable-multilib
-binutils:
+binutils: $(TLD)
+$(TLD): $(REF)/$(BINUTILS)/README
+$(REF)/$(BINUTILS)/README: $(DISTR)/$(BINUTILS_GZ)
+	cd $(REF) ; xzcat $< | tar x && touch $@
